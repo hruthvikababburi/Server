@@ -6,7 +6,7 @@ const db = require('./database')
 const jwt = require('jsonwebtoken')
 
 
-router.post('./signup',(req,res)=>{
+router.post('/signup',(req,res)=>{
     const {name,email,password} = req.body;
     const hashedPwd = bcrypt.hashSync(password,10)
     const userId = uuidv4()
@@ -22,7 +22,7 @@ router.post('./signup',(req,res)=>{
 
 })
 
-router.post('./login',(req,res)=>{
+router.post('/login',(req,res)=>{
     const {email,password} = req.body;
 
     db.get('SELECT * FROM users WHERE email = ?',[email],(err,user)=>{
